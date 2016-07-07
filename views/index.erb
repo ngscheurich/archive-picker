@@ -1,0 +1,27 @@
+<% if @story %>
+  <article class="h-entry row">
+    <div class="col-md-5">
+      <h1 class="p-name"><%= @story.headline %></h1>
+      <div class=" byline"><%= @story.byline %></div>
+      <div class="galleria">
+        <% @story.photos.each do |photo| %>
+          <img src="<%= photo["source"] %>" data-description="<%= photo["caption"] %>">
+        <% end %>
+      </div>
+      <% unless @story.subheadline.nil? %>
+        <h2>@story.subheadline</h2>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <div class="e-content">
+        <%= @story.body %>
+      </div>
+    </div>
+  </article>
+<% else %>
+  <h1 class="welcome">
+    Hi there. You should enter a CMS ID.
+    <br>
+    <i class="fa fa-archive" aria-hidden="true"></i>
+  </h1>
+<% end %>

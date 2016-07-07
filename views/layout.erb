@@ -1,0 +1,48 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Archiver</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="http://theadvocate-com.newyork1.cms.townnews-staging.com/app/assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400|Suez+One|Lora:400,400i,700|Fredoka+One">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-full navbar-light bg-faded">
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-archive" aria-hidden="true"></i>
+        Archiver
+      </a>
+      <form action="/" method="get" class="form-inline pull-xs-right">
+        <input
+            id="cms_id"
+            class="form-control"
+            name="cms_id"
+            type="number"
+            value="<%= @cms_id if @cms_id %>"
+            placeholder="CMS ID"
+            required>
+
+        <button class="btn btn-primary">Preview</button>
+        <a class="btn btn-success-outline" href="/archive-<%= @cms_id %>.xml">Download</a>
+      </form>
+    </nav>
+
+    <div class="container page">
+      <%= yield %>
+    </div>
+
+    <% if @story %>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script src="galleria/galleria-1.4.2.min.js"></script>
+      <script src="js/main.js"></script>
+    <% end %>
+  </body>
+</html>
