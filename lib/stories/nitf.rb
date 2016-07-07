@@ -94,7 +94,7 @@ module Stories
         nitf_related_links(xml)
         nitf_body_text(xml)
         nitf_infobox(xml)
-        # nitf_photos(xml)
+        nitf_photos(xml)
       end
     end
 
@@ -121,11 +121,11 @@ module Stories
     def nitf_photos(xml)
       @story.photos.each do |photo|
         xml.media(:"media-type" => "image") do
-          xml.send(:"media-metadata", name: "id", value: photo.photo_id)
-          xml.send(:"media-reference", source: photo.source)
-          unless photo.caption.nil?
+          xml.send(:"media-metadata", name: "id", value: photo["photo_id"])
+          xml.send(:"media-reference", source: photo["source"])
+          unless photo["caption"].nil?
             xml.send(:"media-caption") do
-              xml.<< "<p>#{photo.caption.gsub(/&#151;/, '&mdash;')}</p>"
+              xml.<< "<p>#{photo['caption'].gsub(/&#151;/, '&mdash;')}</p>"
             end
           end
         end
