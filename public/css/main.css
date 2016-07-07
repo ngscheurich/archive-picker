@@ -11,8 +11,10 @@ body {
 }
 
 .e-content {
+    column-count: 2;
     font-family: 'Lora';
     font-size: 1.1rem;
+    text-align: justify;
 }
 
 .p-name {
