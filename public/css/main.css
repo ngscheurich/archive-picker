@@ -12,6 +12,7 @@ body {
 
 .e-content {
     column-count: 2;
+    column-gap: 1.5em;
     font-family: 'Lora';
     font-size: 1.1rem;
     text-align: justify;
