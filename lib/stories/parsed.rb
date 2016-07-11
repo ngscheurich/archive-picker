@@ -2,6 +2,7 @@ module Stories
   class Parsed
     attr_reader :cms_id,
                 :url,
+                :friendly_publish_date,
                 :publish_date,
                 :time_updated,
                 :headline,
@@ -18,6 +19,7 @@ module Stories
       @story = json
       @cms_id = @story["cms_id"]
       @url = @story["url"]
+      @friendly_publish_date = @story["publish_date"]
       @publish_date = localized_publish_date
       @time_updated = nil
       @headline = @story["headline"]
@@ -33,6 +35,9 @@ module Stories
     private
 
     def localized_publish_date
+      date = @story["publish_date"]
+      fdate = date.tr("-", "").tr(" ", "T").tr(":", "")
+      "#{fdate}"
     end
 
     def blox_section
